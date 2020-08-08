@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-correo',
@@ -8,18 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class CorreoComponent implements OnInit {
   // #region Properties (1)
 
-  public email: any;
-
+  @Input() email: any;
+@Output() accionRealizada: EventEmitter<any> = new EventEmitter();
   // #endregion Properties (1)
 
   // #region Constructors (1)
 
   constructor()
    {
-     this.email = {
-  titulo : 'Titulo del email',
-  cuerpo : 'ksjdhbskdnglnvlsanjkgbasjkbgjkasb',
-};
   }
 
   // #endregion Constructors (1)
@@ -27,6 +23,17 @@ export class CorreoComponent implements OnInit {
   // #region Public Methods (1)
 
   public ngOnInit(): void {
+    // tslint:disable-next-line: triple-equals
+    if (this.email !=  undefined){
+      this.email = {
+        titulo : this.email.titulo,
+        cuerpo: this.email.cuerpo
+      };
+      console.log(this.email);
+    }
+  }
+  // tslint:disable-next-line: typedef
+  onReset(){ this.accionRealizada.emit();
   }
 
   // #endregion Public Methods (1)

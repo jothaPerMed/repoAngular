@@ -17,5 +17,13 @@
 
             Si:<input type="radio" checked="checked" *ngIf= "correo.enviado" ><input type="radio" *ngIf= "!correo.enviado"  >
         </td>
+        <td>
+            <input type="submit" value="Enviar" (click)="clickResponder(correo)">
+        </td>
+        <td>
+            
+        </td>
     </tr>
 </ng-container>
+
+<app-correo *ngIf="correoAResponder.responder" [email] = "correoAResponder" (accionRealizada)= "accionRespuestaRapida(correoAResponder)" ></app-correo>
