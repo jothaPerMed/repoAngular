@@ -1,0 +1,21 @@
+<p>lista-correos works!</p>
+
+<ng-container *ngFor="let correo of correos index as i">
+    <tr>
+        <td>
+           
+            <input type="text" value=" {{correo.titulo}}"/>
+        </td>
+        <td>
+            <textarea>
+                {{correo.cuerpo}}
+            </textarea>
+           
+        </td>
+        <td >
+            No:<input type="radio" *ngIf= "!correo.enviado" checked="checked" ><input type="radio" *ngIf= "correo.enviado" >
+
+            Si:<input type="radio" checked="checked" *ngIf= "correo.enviado" ><input type="radio" *ngIf= "!correo.enviado"  >
+        </td>
+    </tr>
+</ng-container>
